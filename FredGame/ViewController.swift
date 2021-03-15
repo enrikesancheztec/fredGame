@@ -92,7 +92,10 @@ class ViewController: UIViewController {
     
     // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "showTopScores" {
+            let controller = (segue.destination as! Top10ViewController)
+            controller.top10data = top10
+        }
     }
     
     // MARK: Game Methods
