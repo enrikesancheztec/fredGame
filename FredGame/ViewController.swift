@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     var score : Int64 = 0
 
     // MARK: Outlets
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var scoresButton: UIButton!
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
@@ -36,7 +38,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         initializeButtonsGrid()
-
+        disableGameButtons()
+        enableActionButtons()
+        playButton.isEnabled = true
+        scoresButton.isEnabled = true
     }
   
     // MARK: Actions
@@ -77,6 +82,8 @@ class ViewController: UIViewController {
             status.text = "Finished"
             pendingCounter.text = "0"
             top10.add(newScore: score)
+            enableActionButtons()
+            disableGameButtons()
             print(top10.top10List)
         }
         
@@ -90,6 +97,8 @@ class ViewController: UIViewController {
     
     // MARK: Game Methods
     func playRound(roundNumber : Int) {
+        disableGameButtons()
+        disableActionButtons()
         sequenceList = generator.getSequenceList(size: roundNumber)
         turnIndicator.text = "Fred"
         pendingCounter.text = String(roundNumber)
@@ -110,6 +119,8 @@ class ViewController: UIViewController {
             if index < sequenceList.count - 1 {
                 self.processSequenceButton(sequenceList: sequenceList, index: index + 1)
             } else {
+                self.enableGameButtons()
+                self.disableActionButtons()
                 self.turnIndicator.text = "You"
                 self.pendingCounter.text = String(sequenceList.count)
             }
@@ -128,5 +139,44 @@ class ViewController: UIViewController {
         buttonsGrid.insert(button8, at: 8)
         buttonsGrid.insert(button9, at: 9)
     }
+    
+    func disableGameButtons() {
+        button1.isEnabled = false
+        button2.isEnabled = false
+        button3.isEnabled = false
+        button4.isEnabled = false
+        button5.isEnabled = false
+        button6.isEnabled = false
+        button7.isEnabled = false
+        button8.isEnabled = false
+        button9.isEnabled = false
+        button1.isEnabled = false
+        button1.isEnabled = false
+    }
+    
+    func enableGameButtons() {
+        button1.isEnabled = true
+        button2.isEnabled = true
+        button3.isEnabled = true
+        button4.isEnabled = true
+        button5.isEnabled = true
+        button6.isEnabled = true
+        button7.isEnabled = true
+        button8.isEnabled = true
+        button9.isEnabled = true
+        button1.isEnabled = true
+        button1.isEnabled = true
+    }
+    
+    func disableActionButtons() {
+        playButton.isEnabled = false
+        scoresButton.isEnabled = false
+    }
+    
+    func enableActionButtons() {
+        playButton.isEnabled = true
+        scoresButton.isEnabled = true
+    }
+
 }
 
