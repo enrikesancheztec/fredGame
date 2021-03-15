@@ -46,7 +46,7 @@ class ViewController: UIViewController {
   
     // MARK: Actions
     @IBAction func startGame(_ sender: UIButton) {
-        status.text = "Playing"
+        status.text = "🤔"
         playRound(roundNumber: 1)
         score = 0
         scoreLabel.text = "0"
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
             }
         } else {
             pressedButtonCounter = 0
-            status.text = "Finished"
+            status.text = "😱"
             pendingCounter.text = "0"
             top10.add(newScore: score)
             enableActionButtons()
