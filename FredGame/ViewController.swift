@@ -84,6 +84,11 @@ class ViewController: UIViewController {
             top10.add(newScore: score)
             enableActionButtons()
             disableGameButtons()
+            
+            let alertController = UIAlertController(title: "Game Status", message: "GAME OVER", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+            
             print(top10.top10List)
         }
         
