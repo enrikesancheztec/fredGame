@@ -72,6 +72,14 @@ class FredScoreService {
         }
     
         var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .formatted(dateFormatter)
+        let jsonData = try! encoder.encode(newScore)   
+        urlRequest.httpBody = jsonData
 
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)

@@ -12,11 +12,7 @@ class Top10 {
     let service = FredScoreService()
        
     func add(newScore : Score) {
-        top10List.append(newScore)
-        
-        if top10List.count > 10 {
-            top10List = Array(top10List[0...9])
-        }
+        service.makePostCall(newScore: newScore)
     }
     
     func getList() -> [Score] {
