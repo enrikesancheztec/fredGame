@@ -18,8 +18,8 @@ class ViewController: UIViewController {
     var username = "NONAME"
 
     // MARK: Outlets
-    @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var scoresButton: UIButton!
+    @IBOutlet weak var playButton: UIBarButtonItem!
+    @IBOutlet weak var scoresButton: UIBarButtonItem!
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
