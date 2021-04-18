@@ -44,7 +44,13 @@ class FredScoreService {
                     var top10List : [Score] = []
                     for (index, element) in top10Response.enumerated() {
                         print(index, ":", element)
-                        let score = Score(name: "GROGU", date: Date(), points: 200)
+                        let name: String = (element["name"] as? String)!
+                        let dateString: String = (element["date"] as? String)!
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "YYYY-MM-dd"
+                        let date: Date = dateFormatter.date(from: dateString)!
+                        let points: Int = (element["points"] as? Int)!
+                        let score = Score(name: name, date: date, points: points)
 
                         top10List.append(score)
                     }

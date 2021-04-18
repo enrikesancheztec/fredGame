@@ -110,7 +110,7 @@ class ViewController: UIViewController {
         if segue.identifier == "showTopScores" {
             let controller = (segue.destination as! Top10ViewController)
             controller.top10data = top10
-            /*
+            
             top10.loadData() {
                 () in
                 DispatchQueue.main.async {
@@ -118,7 +118,7 @@ class ViewController: UIViewController {
                 }
                 
             }
-            */
+            
         }
     }
     
