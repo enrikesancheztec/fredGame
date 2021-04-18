@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Score {
+class Score : Codable {
     var name : String
     var date : Date
     var points : Int

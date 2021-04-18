@@ -24,7 +24,7 @@ class FredScoreService {
             let task = session.dataTask(with: urlRequest) {
                 (data, response, error) in
                 guard error == nil else {
-                    print("error calling GET on /todos/1")
+                    print("error calling GET on /scores/top10")
                     print(error!)
                     return
                 }
@@ -57,5 +57,31 @@ class FredScoreService {
             }
             task.resume()
       }
+
+    func makePostCall(newScore: Score) {
+        let newScoreEndpoint: String = "https://fredscores.herokuapp.com/scores"
+        guard let url = URL(string: newScoreEndpoint) else {
+            print("Error: cannot create URL")
+            return
+        }
     
+        var urlRequest = URLRequest(url: url)
+
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+            
+        let task = session.dataTask(with: urlRequest) {
+            (data, response, error) in
+            guard error == nil else {
+                print("error calling POST on /scores")
+                print(error!)
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                print("statusCode: \(httpResponse.statusCode)")
+            }
+        }
+        task.resume()
+  }
 }
