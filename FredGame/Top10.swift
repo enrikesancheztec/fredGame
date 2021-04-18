@@ -9,7 +9,8 @@ import Foundation
 
 class Top10 {
     private var top10List : [Score] = []
-    
+    let service = FredScoreService()
+       
     func add(newScore : Score) {
         top10List.append(newScore)
         
@@ -20,5 +21,14 @@ class Top10 {
     
     func getList() -> [Score] {
         return top10List
+    }
+    
+    func loadData(_ handler: @escaping () -> Void) {
+        service.makeGetCall(top10List) {
+            (scoreList) in
+            self.top10List = scoreList
+            
+            handler()
+        }
     }
 }

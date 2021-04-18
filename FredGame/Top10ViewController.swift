@@ -12,7 +12,7 @@ class Top10ViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var scoreTableView: UITableView!
     
     func configureView() {
-
+        
     }
     
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class Top10ViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel!.text = "TEST"
-
+        
         return cell
     }
 }
