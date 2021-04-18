@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB0927C125FFD10E008B105D /* Top10ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0927C025FFD10E008B105D /* Top10ViewController.swift */; };
+		AB737A56262BA9BE005CAF3E /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB737A55262BA9BE005CAF3E /* Score.swift */; };
 		AB7F836825FFD59A004AC3F8 /* Top10.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F836725FFD59A004AC3F8 /* Top10.swift */; };
 		ABDB049625FED55A008CD5BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDB049525FED55A008CD5BE /* AppDelegate.swift */; };
 		ABDB049825FED55A008CD5BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDB049725FED55A008CD5BE /* SceneDelegate.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		AB0927C025FFD10E008B105D /* Top10ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top10ViewController.swift; sourceTree = "<group>"; };
+		AB737A55262BA9BE005CAF3E /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		AB7F836725FFD59A004AC3F8 /* Top10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top10.swift; sourceTree = "<group>"; };
 		ABDB049225FED55A008CD5BE /* FredGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FredGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDB049525FED55A008CD5BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				ABDB04A325FED55B008CD5BE /* Info.plist */,
 				ABDB04AB25FEDA61008CD5BE /* SequenceGenerator.swift */,
 				AB7F836725FFD59A004AC3F8 /* Top10.swift */,
+				AB737A55262BA9BE005CAF3E /* Score.swift */,
 			);
 			path = FredGame;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB737A56262BA9BE005CAF3E /* Score.swift in Sources */,
 				ABDB049A25FED55A008CD5BE /* ViewController.swift in Sources */,
 				ABDB049625FED55A008CD5BE /* AppDelegate.swift in Sources */,
 				AB0927C125FFD10E008B105D /* Top10ViewController.swift in Sources */,

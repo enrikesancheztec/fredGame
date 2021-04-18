@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     var buttonsGrid : [UIButton?] = [UIButton?](repeating : nil, count: 10)
     var sequenceList : [Int] = []
     var pressedButtonCounter : Int = 0
-    var score : Int64 = 0
+    var score : Int = 0
+    var username = "NONAME"
 
     // MARK: Outlets
     @IBOutlet weak var playButton: UIButton!
@@ -43,9 +44,13 @@ class ViewController: UIViewController {
         playButton.isEnabled = true
         scoresButton.isEnabled = true
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        requestNickname()
+    }
   
     // MARK: Actions
-    @IBAction func startGame(_ sender: UIButton) {
+    @IBAction func startGame(_ sender: Any) {
         status.text = "🤔"
         playRound(roundNumber: 1)
         score = 0
@@ -64,7 +69,7 @@ class ViewController: UIViewController {
         }
                
         if sequenceList[pressedButtonCounter] == pressedButtonIndex {
-            score = score + Int64(pressedButtonCounter + 1) * 100
+            score = score + Int(pressedButtonCounter + 1) * 100
             scoreLabel.text = String(score)
             print(score)
             
@@ -81,7 +86,7 @@ class ViewController: UIViewController {
             pressedButtonCounter = 0
             status.text = "😱"
             pendingCounter.text = "0"
-            top10.add(newScore: score)
+            top10.add(newScore: Score(name: username, date: Date(), points: score))
             enableActionButtons()
             disableGameButtons()
             
@@ -89,7 +94,7 @@ class ViewController: UIViewController {
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             present(alertController, animated: true, completion: nil)
             
-            print(top10.top10List)
+            print(top10.getList())
         }
         
         
@@ -129,10 +134,29 @@ class ViewController: UIViewController {
             } else {
                 self.enableGameButtons()
                 self.disableActionButtons()
-                self.turnIndicator.text = "You"
+                self.turnIndicator.text = self.username
                 self.pendingCounter.text = String(sequenceList.count)
             }
         }
+    }
+    
+    func requestNickname() {
+        let alertController = UIAlertController(title: "Nickname needed", message: "Please provide a nickname", preferredStyle: UIAlertController.Style.alert)
+        alertController.addTextField() {
+            (nicknameTextfield) in
+            nicknameTextfield.placeholder = "Type your nickname here"
+        }
+        let ignoreAction = UIAlertAction(title: "Ignore", style: UIAlertAction.Style.cancel, handler: nil)
+        alertController.addAction(ignoreAction)
+        let doneAction = UIAlertAction(title: "Done", style: UIAlertAction.Style.default) {
+            (action) in
+            let textFields = alertController.textFields
+            let nicknameTextfield = textFields?.first
+            self.username = nicknameTextfield?.text! ?? "NONAME"
+        }
+        alertController.addAction(doneAction)
+
+        present(alertController, animated: true, completion: nil)
     }
     
     // MARK: UI Methods

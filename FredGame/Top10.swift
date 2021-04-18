@@ -8,14 +8,17 @@
 import Foundation
 
 class Top10 {
-    var top10List : [Int64] = []
+    private var top10List : [Score] = []
     
-    func add(newScore : Int64) {
+    func add(newScore : Score) {
         top10List.append(newScore)
-        top10List = top10List.sorted().reversed()
         
         if top10List.count > 10 {
             top10List = Array(top10List[0...9])
         }
+    }
+    
+    func getList() -> [Score] {
+        return top10List
     }
 }
