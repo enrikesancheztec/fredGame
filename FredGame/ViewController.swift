@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     var pressedButtonCounter : Int = 0
     var score : Int = 0
     var username = "NONAME"
+    var prefs: UserDefaults = UserDefaults.standard
 
     // MARK: Outlets
     @IBOutlet weak var playButton: UIBarButtonItem!
@@ -46,7 +47,11 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        requestNickname()
+        if let username = prefs.string(forKey: "username") {
+            self.username = username
+        } else {
+            requestNickname()
+        }
     }
   
     // MARK: Actions
@@ -162,6 +167,8 @@ class ViewController: UIViewController {
             let textFields = alertController.textFields
             let nicknameTextfield = textFields?.first
             self.username = nicknameTextfield?.text! ?? "NONAME"
+            
+            self.prefs.set(self.username, forKey: "username")
         }
         alertController.addAction(doneAction)
 
